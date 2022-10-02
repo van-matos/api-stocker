@@ -6,6 +6,15 @@ function generateToken(userId: number) {
   });
 }
 
+function verifyToken(token: string) {
+  try {
+    return jwt.verify(token, String(process.env.JWT_SECRET)) as { id: number };
+  } catch {
+    throw { status: 401, message: "Invalid token" };
+  }
+}
+
 export const tokenGenerator = {
   generateToken,
+  verifyToken,
 };
