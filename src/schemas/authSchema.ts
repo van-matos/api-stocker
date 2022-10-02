@@ -14,4 +14,5 @@ export const signInSchema = joi.object({
 
 export const authSchema = {
   signUpSchema,
+  signInSchema,
 };
