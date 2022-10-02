@@ -14,4 +14,11 @@ productRouter.post(
   productController.newProduct
 );
 
+productRouter.put(
+  "/products/:productId",
+  validateSchema(productSchema),
+  authMiddleware.validateToken,
+  productController.updateProduct
+);
+
 export default productRouter;

@@ -27,4 +27,5 @@ async function updateProduct(req: Request, res: Response) {
 
 export const productController = {
   newProduct,
+  updateProduct,
 };
