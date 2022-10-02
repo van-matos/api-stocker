@@ -7,6 +7,12 @@ async function createProduct(productData: IProductData) {
   return product;
 }
 
+async function findProductById(id: number) {
+  const dbProduct = await prisma.product.findUnique({ where: { id } });
+
+  return dbProduct;
+}
+
 export const productRepository = {
   createProduct,
 };
