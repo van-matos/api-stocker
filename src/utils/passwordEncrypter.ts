@@ -13,4 +13,5 @@ export function verifyPassword(
 
 export const passwordEncrypter = {
   encryptPassword,
+  verifyPassword,
 };

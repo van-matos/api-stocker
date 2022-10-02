@@ -7,7 +7,7 @@ async function addNewUser(userData: IUserData) {
   return user;
 }
 
-async function findByEmail(email: string) {
+async function findUserByEmail(email: string) {
   const dbUser = await prisma.user.findUnique({ where: { email } });
 
   return dbUser;
@@ -15,5 +15,5 @@ async function findByEmail(email: string) {
 
 export const userRepository = {
   addNewUser,
-  findByEmail,
+  findUserByEmail,
 };
