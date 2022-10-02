@@ -13,6 +13,20 @@ async function findProductById(id: number) {
   return dbProduct;
 }
 
+async function updateProduct(
+  id: number,
+  productData: Omit<IProductData, "userId">
+) {
+  const product = await prisma.product.update({
+    where: { id },
+    data: productData,
+  });
+
+  return product;
+}
+
 export const productRepository = {
   createProduct,
+  findProductById,
+  updateProduct,
 };
