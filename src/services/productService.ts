@@ -1,8 +1,11 @@
 import { authService } from "./authService";
 import { productRepository } from "../repositories/productRepository";
-import { INewProductData, IProductData } from "../types/productTypes";
+import { IProductData } from "../types/productTypes";
 
-async function addProduct(userId: number, productData: INewProductData) {
+async function addProduct(
+  userId: number,
+  productData: Omit<IProductData, "userId">
+) {
   await authService.getUserById(userId);
 
   const product = await productRepository.createProduct({
