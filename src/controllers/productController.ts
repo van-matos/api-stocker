@@ -25,7 +25,17 @@ async function updateProduct(req: Request, res: Response) {
   res.status(200).send(product);
 }
 
+async function deleteProduct(req: Request, res: Response) {
+  const userId: number = res.locals.userId;
+  const productId: number = Number(req.params.productId);
+
+  await productService.deleteProduct(userId, productId);
+
+  res.sendStatus(200);
+}
+
 export const productController = {
   newProduct,
   updateProduct,
+  deleteProduct,
 };
