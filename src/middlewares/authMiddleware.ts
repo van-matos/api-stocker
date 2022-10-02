@@ -9,9 +9,9 @@ async function validateToken(req: Request, res: Response, next: NextFunction) {
 
   const token = authorization?.replace("Bearer ", "").trim();
 
-  const userId = await tokenGenerator.verifyToken(token);
+  const user = await tokenGenerator.verifyToken(token);
 
-  res.locals.user = userId;
+  res.locals = user;
 
   next();
 }
