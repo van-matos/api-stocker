@@ -22,7 +22,7 @@ async function getUserByEmail(email: string, password: string) {
   if (!user || !passwordEncrypter.verifyPassword(password, user.password))
     throw { status: 401, message: "Email or password is incorrect." };
 
-  const token: string = tokenGenerator.generateToken(user.id);
+  const token: string = await tokenGenerator.generateToken(user.id);
 
   return token;
 }
