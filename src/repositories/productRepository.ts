@@ -25,8 +25,13 @@ async function updateProduct(
   return product;
 }
 
+async function deleteProduct(id: number) {
+  await prisma.product.delete({ where: { id } });
+}
+
 export const productRepository = {
   createProduct,
   findProductById,
   updateProduct,
+  deleteProduct,
 };
