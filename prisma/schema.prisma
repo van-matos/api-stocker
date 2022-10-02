@@ -13,5 +13,21 @@ model User {
   email    String @unique
   password String
 
+  products  Product[]
+
   @@map("users")
+}
+
+model Product {
+  id          Int     @id @default(autoincrement())
+  userId      Int
+  user        User    @relation(fields: [userId], references: [id])
+  barcode     String
+  name        String
+  description String
+  quantity    Int
+  price       Decimal @db.Decimal(9, 2)
+
+  @@unique([userId, barcode])
+  @@map("products")
 }
