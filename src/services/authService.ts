@@ -27,7 +27,16 @@ async function getUserByEmail(email: string, password: string) {
   return token;
 }
 
+async function getUserById(id: number) {
+  const user = await userRepository.findUserById(id);
+
+  if (!user) throw { status: 401, message: "Unauthorized." };
+
+  return user;
+}
+
 export const authService = {
   createUser,
   getUserByEmail,
+  getUserById,
 };
