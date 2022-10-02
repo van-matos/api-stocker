@@ -13,7 +13,14 @@ async function findUserByEmail(email: string) {
   return dbUser;
 }
 
+async function findUserById(id: number) {
+  const dbUser = await prisma.user.findUnique({ where: { id } });
+
+  return dbUser;
+}
+
 export const userRepository = {
   addNewUser,
   findUserByEmail,
+  findUserById,
 };
