@@ -31,4 +31,5 @@ async function updateProduct(
 
 export const productService = {
   addProduct,
+  updateProduct,
 };
