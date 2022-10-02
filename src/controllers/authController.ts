@@ -21,6 +21,15 @@ async function signUp(req: Request, res: Response) {
   res.status(201).send({ message: "Registration complete." });
 }
 
+async function login(req: Request, res: Response) {
+  const { email, password }: { email: string; password: string } = req.body;
+
+  const token = await authService.getUserByEmail(email, password);
+
+  return res.status(200).send({ token });
+}
+
 export const authController = {
   signUp,
+  login,
 };
