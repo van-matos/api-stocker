@@ -48,9 +48,6 @@ async function updateProduct(
 
   if (!dbProduct) throw { status: 404, message: "Product not found." };
 
-  if (dbProduct.userId !== userId)
-    throw { status: 403, message: "Permission denied." };
-
   const product = await productRepository.updateProduct(productId, productData);
 
   return product;
