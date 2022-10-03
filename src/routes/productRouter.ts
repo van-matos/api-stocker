@@ -20,6 +20,12 @@ productRouter.get(
   productController.findProductsByUser
 );
 
+productRouter.get(
+  "/products/:barcode",
+  authMiddleware.validateToken,
+  productController.findProductByCode
+);
+
 productRouter.put(
   "/products/:productId",
   validateSchema(productSchema),
