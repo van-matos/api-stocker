@@ -16,6 +16,14 @@ async function addProduct(
   return product;
 }
 
+async function findProductsByUser(userId: number) {
+  await authService.getUserById(userId);
+
+  const products = await productRepository.findProductByUser(userId);
+
+  return products;
+}
+
 async function updateProduct(
   userId: number,
   productId: number,
@@ -50,6 +58,7 @@ async function deleteProduct(userId: number, productId: number) {
 
 export const productService = {
   addProduct,
+  findProductsByUser,
   updateProduct,
   deleteProduct,
 };
