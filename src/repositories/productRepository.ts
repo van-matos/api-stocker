@@ -19,6 +19,14 @@ async function findProductByUser(userId: number) {
   return dbProducts;
 }
 
+async function findProductByCode(userId: number, barcode: string) {
+  const dbProduct = await prisma.product.findFirst({
+    where: { userId: userId, barcode: barcode },
+  });
+
+  return dbProduct;
+}
+
 async function updateProduct(
   id: number,
   productData: Omit<IProductData, "userId">
@@ -39,6 +47,7 @@ export const productRepository = {
   createProduct,
   findProductById,
   findProductByUser,
+  findProductByCode,
   updateProduct,
   deleteProduct,
 };
