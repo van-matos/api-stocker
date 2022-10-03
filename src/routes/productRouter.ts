@@ -14,6 +14,12 @@ productRouter.post(
   productController.newProduct
 );
 
+productRouter.get(
+  "/products",
+  authMiddleware.validateToken,
+  productController.findProductsByUser
+);
+
 productRouter.put(
   "/products/:productId",
   validateSchema(productSchema),
