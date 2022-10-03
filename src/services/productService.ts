@@ -24,6 +24,19 @@ async function findProductsByUser(userId: number) {
   return products;
 }
 
+async function findProductByCode(userId: number, barcode: string) {
+  await authService.getUserById(userId);
+
+  const product = await productRepository.findProductByCode(userId, barcode);
+
+  if (!product) throw { status: 404, message: "Product not found." };
+
+  if (product.userId !== userId)
+    throw { status: 403, message: "Permission denied." };
+
+  return product;
+}
+
 async function updateProduct(
   userId: number,
   productId: number,
