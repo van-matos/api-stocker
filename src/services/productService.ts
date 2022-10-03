@@ -72,6 +72,7 @@ async function deleteProduct(userId: number, productId: number) {
 export const productService = {
   addProduct,
   findProductsByUser,
+  findProductByCode,
   updateProduct,
   deleteProduct,
 };
