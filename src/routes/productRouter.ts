@@ -21,4 +21,10 @@ productRouter.put(
   productController.updateProduct
 );
 
+productRouter.delete(
+  "/products/:productId",
+  authMiddleware.validateToken,
+  productController.deleteProduct
+);
+
 export default productRouter;
