@@ -11,6 +11,14 @@ async function newProduct(req: Request, res: Response) {
   res.status(201).send(product);
 }
 
+async function findProductsByUser(req: Request, res: Response) {
+  const userId: number = res.locals.userId;
+
+  const products = await productService.findProductsByUser(userId);
+
+  res.status(200).send(products);
+}
+
 async function updateProduct(req: Request, res: Response) {
   const userId: number = res.locals.userId;
   const productId: number = Number(req.params.productId);
@@ -36,6 +44,7 @@ async function deleteProduct(req: Request, res: Response) {
 
 export const productController = {
   newProduct,
+  findProductsByUser,
   updateProduct,
   deleteProduct,
 };
