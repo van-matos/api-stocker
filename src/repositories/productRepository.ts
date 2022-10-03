@@ -13,6 +13,12 @@ async function findProductById(id: number) {
   return dbProduct;
 }
 
+async function findProductByUser(userId: number) {
+  const dbProducts = await prisma.product.findMany({ where: { userId } });
+
+  return dbProducts;
+}
+
 async function updateProduct(
   id: number,
   productData: Omit<IProductData, "userId">
@@ -32,6 +38,7 @@ async function deleteProduct(id: number) {
 export const productRepository = {
   createProduct,
   findProductById,
+  findProductByUser,
   updateProduct,
   deleteProduct,
 };
